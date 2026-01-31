@@ -2,6 +2,8 @@
 
 ML-powered speech recognition directly in your browser with automatic WebGPU feature detection.
 
+**Website**: http://online-transcript-generator.com/
+
 ## Features
 
 - **Automatic WebGPU Detection**: The app automatically detects if your browser supports WebGPU and loads the appropriate version:
