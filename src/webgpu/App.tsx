@@ -104,7 +104,7 @@ export default function WebGPUApp() {
             <footer className='py-6 px-4 border-t' style={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0' }}>
                 <div className='max-w-3xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 text-sm text-slate-600'>
                     <span>
-                        Support:{" "}
+                        Contact:{" "}
                         <a className='underline hover:text-slate-900' href='mailto:transcript@terrydjony.com'>
                             transcript@terrydjony.com
                         </a>
