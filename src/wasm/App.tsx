@@ -7,7 +7,7 @@ export default function WASMApp() {
 
     return (
         <div className='flex flex-col min-h-screen'>
-            <main className='flex-1 flex justify-center items-center py-8'>
+            <main className='flex-1 flex justify-center items-center py-8' style={{ backgroundColor: '#ffffff' }}>
                 <div className='container flex flex-col justify-center items-center'>
                     <h1 className='text-5xl font-extrabold tracking-tight text-slate-900 sm:text-7xl text-center'>
                         Online Transcript Generator
@@ -27,7 +27,7 @@ export default function WASMApp() {
             </main>
 
             {/* SEO Content Section */}
-            <section className='bg-slate-50 py-12 px-4'>
+            <section className='py-12 px-4' style={{ backgroundColor: '#f8fafc' }}>
                 <div className='max-w-3xl mx-auto'>
                     <h2 className='text-2xl font-bold text-slate-800 mb-6 text-center'>
                         How to Transcribe Audio Online for Free
@@ -101,7 +101,7 @@ export default function WASMApp() {
             </section>
 
             {/* Footer */}
-            <footer className='bg-white py-6 px-4 border-t border-slate-200'>
+            <footer className='py-6 px-4 border-t' style={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0' }}>
                 <div className='max-w-3xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 text-sm text-slate-600'>
                     <span>
                         Support:{" "}
@@ -109,6 +109,13 @@ export default function WASMApp() {
                             transcript@terrydjony.com
                         </a>
                     </span>
+                    <span className='hidden sm:inline'>•</span>
+                    <a
+                        className='underline hover:text-slate-900'
+                        href='https://github.com/terryds/online-transcript-generator'
+                    >
+                        GitHub
+                    </a>
                     <span className='hidden sm:inline'>•</span>
                     <span>
                         Made with{" "}
