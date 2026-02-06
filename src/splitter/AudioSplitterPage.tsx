@@ -139,16 +139,6 @@ export default function AudioSplitterPage() {
                             Split your audio files into multiple parts right in
                             your browser. No uploads, no signups.
                         </h2>
-                        <p className='text-sm text-slate-500'>
-                            Having trouble transcribing long audio files?{" "}
-                            <Link
-                                to='/'
-                                className='text-blue-600 hover:underline font-medium'
-                            >
-                                Split them first
-                            </Link>
-                            , then transcribe each part.
-                        </p>
                     </div>
 
                     {/* File Upload Area */}
@@ -434,6 +424,26 @@ export default function AudioSplitterPage() {
                                 >
                                     🎙️ Go to Transcript Generator
                                 </Link>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Workflow hint — only show when splits aren't displayed yet */}
+                    {splits.length === 0 && (
+                        <div className='mt-6 flex items-center gap-3 text-sm text-slate-500'>
+                            <div className='flex items-center gap-2 flex-1'>
+                                <span className='flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-bold shrink-0'>1</span>
+                                <span>Split your audio here</span>
+                            </div>
+                            <span className='text-slate-300'>→</span>
+                            <div className='flex items-center gap-2 flex-1'>
+                                <span className='flex items-center justify-center w-6 h-6 rounded-full bg-slate-300 text-white text-xs font-bold shrink-0'>2</span>
+                                <span>
+                                    <Link to='/' className='text-blue-600 hover:underline font-medium'>
+                                        Transcribe each part
+                                    </Link>
+                                    {" "}with our free tool
+                                </span>
                             </div>
                         </div>
                     )}
