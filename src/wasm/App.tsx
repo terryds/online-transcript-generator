@@ -1,12 +1,17 @@
+import { Link } from "react-router-dom";
 import { AudioManager } from "./AudioManager";
 import Transcript from "./Transcript";
 import { useTranscriber } from "./useTranscriber";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function WASMApp() {
     const transcriber = useTranscriber();
 
     return (
         <div className='flex flex-col min-h-screen'>
+            <Navbar />
+
             <main className='flex-1 flex justify-center items-center py-8' style={{ backgroundColor: '#ffffff' }}>
                 <div className='container flex flex-col justify-center items-center'>
                     <h1 className='text-5xl font-extrabold tracking-tight text-slate-900 sm:text-7xl text-center'>
@@ -48,6 +53,22 @@ export default function WASMApp() {
                             <h3 className='font-semibold text-slate-800 mb-2'>3. Export</h3>
                             <p className='text-slate-600 text-sm'>Download your transcript as TXT, JSON, or SRT subtitles.</p>
                         </div>
+                    </div>
+
+                    {/* Audio Splitter Callout */}
+                    <div className='mb-10 p-5 bg-amber-50 rounded-xl border border-amber-200 text-center'>
+                        <p className='text-amber-800 font-semibold text-lg'>
+                            ✂️ Having trouble with long audio files?
+                        </p>
+                        <p className='text-amber-700 text-sm mt-1'>
+                            If transcription fails or takes too long, try splitting your audio into smaller parts first.
+                        </p>
+                        <Link
+                            to='/audio-splitter'
+                            className='inline-block mt-3 px-6 py-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-colors'
+                        >
+                            ✂️ Split Audio File
+                        </Link>
                     </div>
 
                     <h3 className='text-xl font-semibold text-slate-800 mb-4 text-center'>
@@ -100,34 +121,7 @@ export default function WASMApp() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className='py-6 px-4 border-t' style={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0' }}>
-                <div className='max-w-3xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 text-sm text-slate-600'>
-                    <span>
-                        Contact:{" "}
-                        <a className='underline hover:text-slate-900' href='mailto:transcript@terrydjony.com'>
-                            transcript@terrydjony.com
-                        </a>
-                    </span>
-                    <span className='hidden sm:inline'>•</span>
-                    <a
-                        className='underline hover:text-slate-900'
-                        href='https://github.com/terryds/online-transcript-generator'
-                    >
-                        GitHub
-                    </a>
-                    <span className='hidden sm:inline'>•</span>
-                    <span>
-                        Made with{" "}
-                        <a
-                            className='underline hover:text-slate-900'
-                            href='https://github.com/xenova/transformers.js'
-                        >
-                            🤗 Transformers.js
-                        </a>
-                    </span>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 }

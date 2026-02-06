@@ -1,29 +1,40 @@
 import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { isWebGPUAvailable } from "./utils/Constants";
 
-// Lazy load the appropriate app based on WebGPU availability
+// Lazy load the appropriate transcription app based on WebGPU availability
 const WebGPUApp = lazy(() => import("./webgpu/App"));
 const WASMApp = lazy(() => import("./wasm/App"));
+const AudioSplitterPage = lazy(() => import("./splitter/AudioSplitterPage"));
 
 function LoadingScreen() {
     return (
         <div className='flex justify-center items-center min-h-screen'>
             <div className='text-center'>
                 <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4'></div>
-                <p className='text-lg text-slate-600'>Loading Whisper Web...</p>
-                <p className='text-sm text-slate-400 mt-2'>
-                    {isWebGPUAvailable ? "WebGPU detected - Loading accelerated version" : "Loading WASM version"}
-                </p>
+                <p className='text-lg text-slate-600'>Loading...</p>
             </div>
         </div>
     );
 }
 
+function TranscriptionApp() {
+    return isWebGPUAvailable ? <WebGPUApp /> : <WASMApp />;
+}
+
 function App() {
     return (
-        <Suspense fallback={<LoadingScreen />}>
-            {isWebGPUAvailable ? <WebGPUApp /> : <WASMApp />}
-        </Suspense>
+        <BrowserRouter>
+            <Suspense fallback={<LoadingScreen />}>
+                <Routes>
+                    <Route path='/' element={<TranscriptionApp />} />
+                    <Route
+                        path='/audio-splitter'
+                        element={<AudioSplitterPage />}
+                    />
+                </Routes>
+            </Suspense>
+        </BrowserRouter>
     );
 }
 
